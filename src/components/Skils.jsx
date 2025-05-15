@@ -1,5 +1,5 @@
 import React from "react";
-import { FaJs } from "react-icons/fa";
+
 
 const skills = [
   {
@@ -10,10 +10,14 @@ const skills = [
     name: "CSS",
     href: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg",
   },
-  { name: "JavaScript", href: <FaJs /> },
+  
   {
     name: "TypeScript",
     href: "https://upload.wikimedia.org/wikipedia/commons/4/4e/TypeScript_logo_2020.svg",
+  },
+  {
+    name: "JavaScript",
+    href: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
   },
   {
     name: "React",
@@ -39,79 +43,37 @@ const skills = [
     name: "Bootstrap",
     href: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg",
   },
-  {
-    name: "Tailwind CSS",
-    href: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-  },
-  {
-    name: "Material-UI",
-    href: "https://upload.wikimedia.org/wikipedia/commons/1/10/Material-UI_Logo.svg",
-  },
-  {
-    name: "Figma",
-    href: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
-  },
-  {
-    name: "Adobe XD",
-    href: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Adobe_XD_CC_icon.svg",
-  },
-  {
-    name: "Photoshop",
-    href: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
-  },
-  {
-    name: "Illustrator",
-    href: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg",
-  },
-  {
-    name: "Canva",
-    href: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Canva_Logo.png",
-  },
-  {
-    name: "WordPress",
-    href: "https://upload.wikimedia.org/wikipedia/commons/2/20/WordPress_logo.svg",
-  },
-  {
-    name: "SEO",
-    href: "https://upload.wikimedia.org/wikipedia/commons/3/3d/SEO_icon.svg",
-  },
-  {
-    name: "Digital Marketing",
-    href: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Digital_marketing_icon.svg",
-  },
-  {
-    name: "Content Writing",
-    href: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Content_writing_icon.svg",
-  },
-  {
-    name: "Social Media Management",
-    href: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Social_media_icon.svg",
-  },
 ];
 
 const Skils = () => {
+  const filteredSkills = skills.filter((skill) =>
+    [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Bootstrap",
+      "Git",
+    ].includes(skill.name)
+  );
+
   return (
-    <div
-      className="w-full min-h-screen justify-center bg-[#134f15]"
-      id="skills"
-    >
-      <h1 className="text-center text-5xl font-semibold py-4 md:py-20 text-white">
+    <div className="w-full min-h-screen justify-center bg-gray-800" id="skills">
+      <h1 className="text-center text-5xl font-semibold py-2 md:py-20 text-white">
         Skills
       </h1>
-      <div className="px-10 py-10 md:px-20 md:py-20">
-        <p className="ml-4 text-lg font-light">
-          Here are some of the skills I have acquired:
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 align-center">
-          {skills.map((skill, index) => (
-            <div className="flex flex-col " key={index}>
+      <div className="px-6 py-2 md:px-20 md:py-20 ">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10 place-items-center">
+          {filteredSkills.map((skill, index) => (
+            <div className="flex flex-col items-center" key={index}>
               <img
                 src={skill.href}
                 alt={skill.name}
-                className="w-16 h-16  rounded-md"
+                className="w-16 h-16 rounded-md"
               />
-              <div className="pt-3">
+              <div className="pt-3 text-center">
                 <h2 className="text-3xl">{skill.name}</h2>
                 <p>{skill.description}</p>
               </div>

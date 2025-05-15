@@ -26,7 +26,7 @@ function Project() {
 
   return (
     <div
-      className="w-full min-h-screen justify-center bg-[#1b134f]"
+      className="w-full min-h-screen justify-center bg-gray-900"
       id="projects"
     >
       <h1 className="text-center text-5xl font-semibold py-4 md:py-20 text-white">
@@ -40,7 +40,7 @@ function Project() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
           {fakeProjects.map((project) => (
             <div
-              className="flex flex-col gap-5 bg-slate-400 px-7 py-3 rounded-lg shadow-lg"
+              className="flex flex-col gap-5 bg-slate-600 px-7 py-3 rounded-lg shadow-lg"
               key={project.id}
             >
               <img

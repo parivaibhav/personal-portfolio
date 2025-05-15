@@ -23,7 +23,7 @@ function Navbar() {
 
   return (
     <div
-      className={`fixed z-50 w-full px-6 md:px-20 py-4 md:py-8 text-slate-50 font-['FoundersGrotesk X-cond Bold'] flex justify-between items-center transition-transform duration-300 ${
+      className={`  fixed z-50 w-full px-6 md:px-20 py-4 md:py-8 text-slate-50 font-['FoundersGrotesk X-cond Bold'] flex justify-between items-center transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } bg-white`}
     >

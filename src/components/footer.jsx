@@ -31,12 +31,12 @@ function footer() {
           LinkedIn
         </a>
         <a
-          href="https://twitter.com"
+          href="https://instagram.com/vaibhhav87"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#61dafb", textDecoration: "none", margin: "0 10px" }}
         >
-          Twitter
+          Instagram
         </a>
       </div>
       <p style={{ marginTop: "10px", fontSize: "12px", color: "#aaa" }}>

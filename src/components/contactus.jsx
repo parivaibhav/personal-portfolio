@@ -4,7 +4,7 @@ function contactus() {
   return (
     <div
       id="contactus"
-      className="w-full min-h-screen flex flex-col justify-center items-center bg-[#1A1A1A]"
+      className="w-full min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white"
     >
       <div className="text-5xl font-['FoundersGrotesk X-cond Bold'] text-center mb-10">
         Contact Us
@@ -13,7 +13,7 @@ function contactus() {
         We would love to hear from you! Please reach out to us via email or
         phone.
       </div>
-      <form className="flex flex-col gap-4 w-full max-w-md">
+      <form className="flex flex-col gap-4 w-full max-w-md md:px-10 px-5 py-10 bg-gray-800 rounded-lg shadow-lg"> 
         <input
           type="email"
           placeholder="Your Email"
