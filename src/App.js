@@ -15,11 +15,17 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleLoad = () => {
       setIsLoading(false);
-    }, 4000); // Simulate loading for 2 seconds
+    };
 
-    return () => clearTimeout(timer);
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
 
   return (

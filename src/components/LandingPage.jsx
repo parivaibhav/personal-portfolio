@@ -2,14 +2,17 @@ import React from "react";
 // import { animate, svg } from "animejs";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { CiDesktopMouse2 } from "react-icons/ci";
+import { gsap } from "gsap";
 
 function LandingPage() {
   // Animation for the mouse icon
   const icons = [
     { icon: <FaGithub />, href: "https://github.com/parivaibhav" },
-    { icon: <FaLinkedin /> },
-    { icon: <FaInstagram /> },
+    {
+      icon: <FaLinkedin />,
+      href: "https://www.linkedin.com/in/vaibhav-pari-399a88230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+    },
+    { icon: <FaInstagram />, href: "https://www.instagram.com/vaibhhav87/" },
   ];
   const renderIcons = () => {
     return icons.map((item, index) => (
@@ -25,9 +28,17 @@ function LandingPage() {
     ));
   };
 
+  React.useEffect(() => {
+    gsap.fromTo(
+      ".animated-text",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.2 }
+    );
+  }, []);
+
   return (
     <div className="h-screen bg-gray-900 text-white flex items-center justify-center">
-      <div className="flex flex-col lg:flex-row-reverse  md:flex-row items-center justify-between w-10/12 gap-10 lg:gap-20 relative">
+      <div className="flex flex-col lg:flex-row-reverse md:flex-row items-center justify-between w-10/12 gap-10 lg:gap-20 relative">
         {/* Left Content */}
         <div>
           <motion.img
@@ -48,17 +59,23 @@ function LandingPage() {
           />
         </div>
         {/* Right Image */}
-        <div className="w-100 flex flex-col  items-start w-[90%] md:w-[70%] lg:w-[50%]">
-          <h1 className="text-5xl font-bold mb-4 ">
+        <div className="w-100 flex flex-col items-start w-[90%] md:w-[70%] lg:w-[50%]">
+          <h1 className="text-5xl font-bold mb-4 animated-text">
             Hi, I'm a MERN Stack Developer
           </h1>
-          <p className="text-lg text-gray-400 mb-8">
+          <p className="text-lg text-gray-400 mb-8 animated-text">
             I specialize in building modern, scalable, and efficient web
             applications using MongoDB, Express, React, and Node.js.
           </p>
           <div className="flex gap-4 mb-8">{renderIcons()}</div>
           <div>
-            <button className="button">
+            <button
+              className="button"
+              onClick={
+                (window.location.href =
+                  "https://www.linkedin.com/in/vaibhav-pari-399a88230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app")
+              }
+            >
               <svg
                 viewBox="0 0 16 16"
                 className="bi bi-lightning-charge-fill"
@@ -73,11 +90,6 @@ function LandingPage() {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Mouse Icon */}
-      <div className="absolute bottom-10 md:bottom-11 left-1/2 transform -translate-x-1/2 text-gray-400">
-        <CiDesktopMouse2 className="text-4xl animate-bounce" />
       </div>
     </div>
   );

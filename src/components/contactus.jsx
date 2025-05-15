@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 function contactus() {
   return (
@@ -13,9 +14,63 @@ function contactus() {
         We would love to hear from you! Please reach out to us via email or
         phone.
       </div>
-      <form className="flex flex-col gap-4 w-full max-w-md md:px-10 px-5 py-10 bg-gray-800 rounded-lg shadow-lg"> 
+      <form
+        className="flex flex-col gap-4 w-full max-w-md md:px-10 px-5 py-10 bg-gray-800 rounded-lg shadow-lg"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const emailInput = e.target.elements.email;
+          const mobileInput = e.target.elements.mobileNumber;
+          const queryInput = e.target.elements.query;
+
+          if (!emailInput.validity.valid) {
+            const notifyemail = () => {
+              toast.error("Please enter a valid email address.");
+              notifyemail.onClose = () => {
+                emailInput.focus();
+              };
+            };
+            notifyemail();
+            return;
+          }
+
+          const numberRegex = /^[0-9]{10}$/;
+          if (!numberRegex.test(mobileInput.value)) {
+            const notifymobile = () => {
+              toast.error("Please enter a valid mobile number.");
+              notifymobile.onClose = () => {
+                emailInput.focus();
+              };
+            };
+            notifymobile();
+            return;
+          }
+
+          if (queryInput.value.trim() === "") {
+            const notifyqurey = () => {
+              toast.error("Please enter your query.");
+              notifyqurey.onClose = () => {
+                emailInput.focus();
+              };
+            };
+            notifyqurey();
+            return;
+          }
+          if (emailInput.value && mobileInput.value && queryInput.value) {
+            const notify = () => {
+              toast.success("Your query has been submitted successfully!");
+              notify.onClose = () => {
+                emailInput.value = "";
+                mobileInput.value = "";
+                queryInput.value = "";
+              };
+            };
+            notify();
+          }
+        }}
+      >
         <input
           type="email"
+          name="email"
           placeholder="Your Email"
           className="p-3 rounded-md border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500 invalid:border-red-500"
         />
@@ -24,19 +79,12 @@ function contactus() {
           name="mobileNumber"
           placeholder="Your Mobile Number"
           className="p-3 rounded-md border border-gray-300 bg-white text-black focus:outline-none focus:ring-2"
-          onChange={(e) => {
-            const numberRegex = /^[0-9]{10}$/;
-            if (!numberRegex.test(e.target.value)) {
-              e.target.style.border = "2px solid red";
-            } else {
-              e.target.style.border = "1px solid gray";
-            }
-          }}
         />
         <textarea
+          name="query"
           placeholder="Your Query"
           rows="4"
-          className="p-3 rounded-md border border-gray-300  bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-3 rounded-md border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>
         <button
           type="submit"
@@ -44,6 +92,7 @@ function contactus() {
         >
           Submit
         </button>
+        <ToastContainer />
       </form>
     </div>
   );
