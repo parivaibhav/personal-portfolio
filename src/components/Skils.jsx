@@ -10,7 +10,7 @@ const skills = [
     name: "CSS",
     href: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg",
   },
-  
+
   {
     name: "TypeScript",
     href: "https://upload.wikimedia.org/wikipedia/commons/4/4e/TypeScript_logo_2020.svg",
@@ -33,7 +33,7 @@ const skills = [
   },
   {
     name: "MongoDB",
-    href: "https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg",
+    href: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Mongodb-icon.svg/1200px-Mongodb-icon.svg.png",
   },
   {
     name: "Git",
@@ -49,6 +49,8 @@ const Skils = () => {
   const filteredSkills = skills.filter((skill) =>
     [
       "HTML",
+      "React",
+
       "CSS",
       "JavaScript",
       "Node.js",
