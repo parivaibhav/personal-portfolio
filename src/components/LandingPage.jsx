@@ -76,7 +76,7 @@ function LandingPage() {
       </div>
 
       {/* Bottom Mouse Icon */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-gray-400">
+      <div className="absolute bottom-10 md:bottom-11 left-1/2 transform -translate-x-1/2 text-gray-400">
         <CiDesktopMouse2 className="text-4xl animate-bounce" />
       </div>
     </div>
