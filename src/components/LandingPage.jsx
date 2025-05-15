@@ -69,12 +69,9 @@ function LandingPage() {
           </p>
           <div className="flex gap-4 mb-8">{renderIcons()}</div>
           <div>
-            <button
+            <a
+              href="https://www.linkedin.com/in/vaibhav-pari-399a88230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               className="button"
-              onClick={
-                (window.location.href =
-                  "https://www.linkedin.com/in/vaibhav-pari-399a88230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app")
-              }
             >
               <svg
                 viewBox="0 0 16 16"
@@ -87,7 +84,7 @@ function LandingPage() {
                 <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z" />
               </svg>
               Get in Touch
-            </button>
+            </a>
           </div>
         </div>
       </div>
