@@ -14,10 +14,10 @@ function LoadingCircleSpinner() {
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-gray-900">
       <motion.div
-        className="text-white text-5xl lg:text-8xl font-bold font-['FoundersGrotesk X-cond Bold']"
+        className="text-white text-5xl lg:text-8xl font-bold font-['FoundersGrotesk X-cond Bold]"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7,  }}
+        transition={{ duration: 0.7 }}
         key={count}
       >
         {count}%
