@@ -20,7 +20,7 @@ function App() {
     };
 
     if (document.readyState === "complete") {
-      handleLoad();
+      setTimeout(handleLoad, 4000);
     } else {
       window.addEventListener("load", handleLoad);
     }

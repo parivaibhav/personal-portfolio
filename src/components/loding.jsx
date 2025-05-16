@@ -1,37 +1,28 @@
+import React from "react";
 import { motion } from "framer-motion";
 
 function LoadingCircleSpinner() {
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (count < 100) {
+      const timer = setTimeout(() => setCount(count + 1), 20);
+      return () => clearTimeout(timer);
+    }
+  }, [count]);
+
   return (
-    <>
-      <div className="flex justify-center items-center h-screen bg-gray-900">
-        <motion.div
-          className="flex gap-1 text-white text-2xl font-bold"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-        >
-          {"Loading...".split("").map((letter, index) => (
-            <motion.span
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </motion.div>
-      </div>
-    </>
+    <div className="flex flex-col justify-center items-center h-screen bg-gray-900">
+      <motion.div
+        className="text-white text-5xl lg:text-8xl font-bold font-['FoundersGrotesk X-cond Bold']"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7,  }}
+        key={count}
+      >
+        {count}%
+      </motion.div>
+    </div>
   );
 }
 

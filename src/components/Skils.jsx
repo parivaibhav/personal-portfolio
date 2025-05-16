@@ -1,5 +1,5 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 
 const skills = [
   {
@@ -69,7 +69,15 @@ const Skils = () => {
       <div className="px-6 py-2 md:px-20 md:py-20 ">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10 place-items-center">
           {filteredSkills.map((skill, index) => (
-            <div className="flex flex-col items-center" key={index}>
+            <motion.div
+              className="flex flex-col items-center"
+              key={index}
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.2 },
+              }}
+            
+            >
               <img
                 src={skill.href}
                 alt={skill.name}
@@ -79,7 +87,7 @@ const Skils = () => {
                 <h2 className="text-3xl">{skill.name}</h2>
                 <p>{skill.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
