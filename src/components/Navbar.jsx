@@ -36,7 +36,7 @@ function Navbar() {
           { name: "Projects", href: "#projects" },
           { name: "About us", href: "#aboutus" },
           { name: "Contact Us", href: "#contactus" },
-          { name: "Insights", href: "#insights" },
+        
         ].map((item, index) => (
           <a
             href={item.href}

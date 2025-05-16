@@ -22,7 +22,7 @@ const services = [
 ];
 function Services() {
   return (
-    <div className="bg-gray-800  w-100 min-h-screen flex  align-middle justify-around py-10">
+    <div className="bg-gray-800  w-100 min-h-screen flex  align-middle justify-around py-10" id="services">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl font-bold mb-6 text-center text-yellow-500">
           My Services

@@ -36,8 +36,45 @@ function LandingPage() {
     );
   }, []);
 
+  // Typewriter effect for the heading
+  const [displayedText, setDisplayedText] = React.useState("");
+  const [titleIndex, setTitleIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const titles = [" MERN Stack Developer", " Web Developer" ,"UI/UX Designer" ,"React Js Devloper"];
+    let currentIndex = 0;
+    let direction = 1; // 1 for typing, -1 for deleting
+    let timeoutId;
+
+    const typeWriter = () => {
+      setDisplayedText(titles[titleIndex].slice(0, currentIndex));
+      if (direction === 1) {
+        if (currentIndex < titles[titleIndex].length) {
+          currentIndex++;
+          timeoutId = setTimeout(typeWriter, 60);
+        } else {
+          direction = -1;
+          timeoutId = setTimeout(typeWriter, 1000); // pause before deleting
+        }
+      } else {
+        if (currentIndex > 0) {
+          currentIndex--;
+          timeoutId = setTimeout(typeWriter, 40);
+        } else {
+          direction = 1;
+          setTitleIndex((prev) => (prev + 1) % titles.length);
+        }
+      }
+    };
+
+    typeWriter();
+
+    return () => clearTimeout(timeoutId);
+    // Only re-run when titleIndex changes
+  }, [titleIndex]);
+
   return (
-    <div className="h-screen bg-gray-900 text-white flex items-center justify-center ">
+    <div className="h-screen bg-gray-900 text-white flex items-center justify-center " id="aboutus">
       <div className="flex flex-col lg:flex-row-reverse md:flex-row items-center justify-between w-10/12 gap-10 lg:gap-[30px] relative">
         {/* Left Content */}
         <div className="flex items-center justify-center">
@@ -46,22 +83,26 @@ function LandingPage() {
             alt="Profile"
             className="w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 rounded-full object-cover shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl"
             animate={{
-              scale: [0.5, 1],
-              rotate: [0, 0, 0, 0, 0],
-              borderRadius: ["50%", "50%", "50%", "50%", "50%"],
+              scale: [0.9, 1.05, 0.9],
+              rotate: [0, 2, -2, 0],
+              borderRadius: ["50%", "48%", "52%", "50%"],
             }}
             transition={{
               duration: 2,
               ease: "easeInOut",
               repeat: Infinity,
-              delay: 1,
             }}
           />
         </div>
         {/* Right Image */}
-        <div className="w-100 flex flex-col items-start w-[90%] md:w-[70%] lg:w-[50%] mt-5 ">
-          <h1 className="text-5xl font-bold mb-4 animated-text">
-            Hi, I'm a MERN Stack Developer
+        <div className="w-100 flex flex-col items-start w-[90%] md:w-[70%] lg:w-[50%] mt-5">
+          <h1 className="text-5xl font-bold mb-4 animated-text inline ">
+            <div> Hi I'm</div>
+            <div className="text-yellow-500">
+              {" "}
+              {displayedText}
+              <span className="border-r-2 border-white animate-pulse ml-1" />
+            </div>
           </h1>
           <p className="text-lg text-gray-400 mb-8 animated-text">
             I specialize in building modern, scalable, and efficient web

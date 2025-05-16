@@ -1,98 +1,57 @@
 import React from "react";
-import { motion } from "framer-motion";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaBootstrap,
+  FaNodeJs,
+  FaReact,
+} from "react-icons/fa";
+import { SiTailwindcss, SiExpress, SiMongodb, SiNetlify } from "react-icons/si";
+import { FaGitAlt, FaGithub } from "react-icons/fa";
 
-const skills = [
-  {
-    name: "HTML",
-    href: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg",
-  },
-  {
-    name: "CSS",
-    href: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg",
-  },
+function Skils() {
+  // Importing required icons from react-icons
 
-  {
-    name: "TypeScript",
-    href: "https://upload.wikimedia.org/wikipedia/commons/4/4e/TypeScript_logo_2020.svg",
-  },
-  {
-    name: "JavaScript",
-    href: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-  },
-  {
-    name: "React",
-    href: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-  },
-  {
-    name: "Node.js",
-    href: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
-  },
-  {
-    name: "Express.js",
-    href: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
-  },
-  {
-    name: "MongoDB",
-    href: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Mongodb-icon.svg/1200px-Mongodb-icon.svg.png",
-  },
-  {
-    name: "Git",
-    href: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg",
-  },
-  {
-    name: "Bootstrap",
-    href: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg",
-  },
-];
-
-const Skils = () => {
-  const filteredSkills = skills.filter((skill) =>
-    [
-      "HTML",
-      "React",
-
-      "CSS",
-      "JavaScript",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Bootstrap",
-      "Git",
-    ].includes(skill.name)
-  );
+  const skills = [
+    { icon: <FaHtml5 color="#e34c26" />, name: "HTML5" },
+    { icon: <FaCss3Alt color="#264de4" />, name: "CSS3" },
+    { icon: <FaJs color="#f0db4f" />, name: "JavaScript" },
+    { icon: <FaBootstrap color="#563d7c" />, name: "Bootstrap" },
+    { icon: <SiTailwindcss color="#38bdf8" />, name: "Tailwind CSS" },
+    { icon: <SiExpress color="#000000" />, name: "Express" },
+    { icon: <FaNodeJs color="#68a063" />, name: "Node.js" },
+    { icon: <SiMongodb color="#4db33d" />, name: "MongoDB" },
+    { icon: <FaReact color="#76a6d8" />, name: "React Js" },
+    { icon: <FaGitAlt color="#f34f29" />, name: "Git" },
+    { icon: <FaGithub color="#fff" />, name: "GitHub" },
+    {icon:<SiNetlify />,name:"Netlify"}
+  ];
 
   return (
-    <div className="w-full min-h-screen justify-center bg-gray-800" id="skills">
-      <h1 className="text-center text-5xl font-semibold py-2 md:py-20 text-white">
-        Skills
-      </h1>
-      <div className="px-6 py-2 md:px-20 md:py-20 ">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10 place-items-center">
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              className="flex flex-col items-center"
-              key={index}
-              whileHover={{
-                scale: 1.1,
-                transition: { duration: 0.2 },
-              }}
-            
-            >
-              <img
-                src={skill.href}
-                alt={skill.name}
-                className="w-16 h-16 rounded-md"
-              />
-              <div className="pt-3 text-center">
-                <h2 className="text-3xl">{skill.name}</h2>
-                <p>{skill.description}</p>
+    <>
+      <div className="bg-gray-800 w-full min-h-screen">
+        <div className="text-center text-5xl font-semibold py-4 md:py-10 text-white">
+          Skils
+        </div>
+        <div className="flex items-center justify-center py-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+            {skills.map((skill, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center bg-gray-700 rounded-lg p-6 shadow-md hover:bg-emerald-700 transition-transform transform hover:scale-200"
+              >
+                <div className="text-5xl mb-2">{skill.icon}</div>
+                <span className="text-white text-lg font-semibold">
+                  {skill.name}
+                </span>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
-};
+}
 
 export default Skils;

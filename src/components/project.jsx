@@ -59,7 +59,7 @@ function Project() {
         className="w-full min-h-screen justify-center bg-gray-900"
         id="projects"
       >
-        <h1 className="text-center text-5xl font-semibold py-4 md:py-20 text-white">
+        <h1 className="text-center text-5xl font-semibold py-4 md:py-10 text-white">
           Projects
         </h1>
         <div className="px-10 py-10 md:px-20 md:py-20">
