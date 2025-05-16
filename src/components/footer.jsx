@@ -11,7 +11,7 @@ function footer() {
       }}
     >
       <p>
-        © {new Date().getFullYear()} MERN Stack Developer. All rights reserved.
+        © {new Date().getFullYear()} Pari Vaibhav. All rights reserved.
       </p>
       <div style={{ marginTop: "10px" }}>
         <a
@@ -40,7 +40,7 @@ function footer() {
         </a>
       </div>
       <p style={{ marginTop: "10px", fontSize: "12px", color: "#aaa" }}>
-        Designed and Developed with ❤️ by MERN Stack Developer
+        Designed and Developed with ❤️ by Pari Vaibhav [ Mern Stack Devloper ]
       </p>
     </div>
   );

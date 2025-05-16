@@ -37,10 +37,10 @@ function LandingPage() {
   }, []);
 
   return (
-    <div className="h-screen bg-gray-900 text-white flex items-center justify-center">
-      <div className="flex flex-col lg:flex-row-reverse md:flex-row items-center justify-between w-10/12 gap-10 lg:gap-20 relative">
+    <div className="h-screen bg-gray-900 text-white flex items-center justify-center ">
+      <div className="flex flex-col lg:flex-row-reverse md:flex-row items-center justify-between w-10/12 gap-10 lg:gap-[30px] relative">
         {/* Left Content */}
-        <div>
+        <div className="flex items-center justify-center">
           <motion.img
             src="images/profile.jpg"
             alt="Profile"
@@ -59,7 +59,7 @@ function LandingPage() {
           />
         </div>
         {/* Right Image */}
-        <div className="w-100 flex flex-col items-start w-[90%] md:w-[70%] lg:w-[50%]">
+        <div className="w-100 flex flex-col items-start w-[90%] md:w-[70%] lg:w-[50%] mt-5 ">
           <h1 className="text-5xl font-bold mb-4 animated-text">
             Hi, I'm a MERN Stack Developer
           </h1>

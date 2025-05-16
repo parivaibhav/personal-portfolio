@@ -1,6 +1,9 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
+import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { gsap } from "gsap/gsap-core";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Project() {
   const fakeProjects = [
@@ -30,11 +33,25 @@ function Project() {
       description:
         "MessageHub is a Node.js and Express.js-based chat API that enables messaging between two users using sender and receiver names. It supports creating, updating, deleting, and retrieving messages. Ideal for one-on-one chat applications, MessageHub provides a simple RESTful backend for personal messaging or customer support platforms.",
       src: "https://media.istockphoto.com/id/1307162575/photo/wireless-wifi-for-remote-work-in-airport-lounge-bar-hotel-lobby-or-cafe-phone-and-laptop.webp?a=1&b=1&s=612x612&w=0&k=20&c=aCfr0ha83NPwCcSfA5p3SszcnWBcclvRPpaasX7LeOA=",
-      githubLink: "https:///github.com/parivaibhav/messageHub",
+      githubLink: "https:///github.com/parivaibhav/messageHub-crud-app",
       projectLink: "",
       skilsName: ["#nodejs", "#EJS", "#ExpressJS"],
     },
   ];
+
+  // Helper to show toast
+  const showNoLinkToast = () => {
+    toast.error("Link not available", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   return (
     <>
@@ -89,21 +106,46 @@ function Project() {
                     </span>
                   ))}
                 </div>
-                <div className="flex">
-                  <div className="flex justify-between gap-1">
+                <div className="flex w-100 ">
+                  <div className="flex justify-between gap-x-3 ">
                     <button
                       type="button"
-                      className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+                      className="bg-blue-500 text-white px-2 py-2 rounded-md hover:bg-blue-600 transition duration-300 flex items-center justify-center mx-auto"
+                      onClick={() => {
+                        if (
+                          !project.projectLink ||
+                          project.projectLink === ""
+                        ) {
+                          showNoLinkToast();
+                        } else {
+                          window.open(project.projectLink, "_blank");
+                        }
+                      }}
                     >
                       View Project
+                      <LuSquareArrowOutUpRight className="inline-block mx-2" />
                     </button>
                     <button
                       type="button"
-                      className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition duration-300"
-                      onClick={() => window.open(project.githubLink, "_blank")}
+                      className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition duration-300 flex items-center justify-center mx-auto"
+                      onClick={() => {
+                        if (!project.githubLink || project.githubLink === "") {
+                          toast.info("Link not available", {
+                            position: "top-center",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                          });
+                        } else {
+                          window.open(project.githubLink, "_blank");
+                        }
+                      }}
                     >
                       <FaGithub className="inline-block mr-2" />
-                      View Code
                     </button>
                   </div>
                 </div>
