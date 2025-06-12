@@ -1,5 +1,4 @@
 import React from "react";
-import { gsap } from "gsap/gsap-core";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,7 +11,7 @@ function Project() {
         "The Airbnb Clone is a full-stack web application built using the MERN (MongoDB, Express.js, Node.js) stack (frontend can be added later if needed). This project replicates the core functionalities of Airbnb, enabling users to create, manage, and interact with property listings.",
       src: "https://img.freepik.com/free-vector/gradient-ui-ux-landing-page_52683-69534.jpg?ga=GA1.1.1161617256.1744954471&semt=ais_hybrid&w=740",
       githubLink: "https:///github.com/parivaibhav/wanderlust",
-      projectLink: "",
+      projectLink: "https://wanderlust-qv3r.onrender.com/listings/",
       skilsName: ["#mongoDB", "#node.js", "#ExpressJS"],
     },
     {

@@ -1,15 +1,15 @@
+// App.jsx
 import "./App.css";
 import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import LandingPage from "./components/LandingPage.jsx";
-import Services from "./components/Services.jsx"; // Removed unused import
-import Skils from "./components/Skils.jsx"; // Removed unused import
+import Services from "./components/Services.jsx";
+import Skils from "./components/Skils.jsx";
 import ContactUs from "./components/contactus.jsx";
 import Footer from "./components/footer.jsx";
-import Loading from "./components/loding.jsx"; // Import the Loading component
+import Loading from "./components/loding.jsx";
 import Projects from "./components/project.jsx";
-
-
+import ScrollProgress from "./components/ScrollProgress.jsx"; // <-- New import
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -31,10 +31,12 @@ function App() {
   return (
     <div className="w-full min-h-screen text-white homepage">
       {isLoading ? (
-        <Loading /> // Import and use the Loading component
+        <Loading />
       ) : (
         <>
+          
           <Navbar />
+          <ScrollProgress /> {/* Scroll Progress Bar */}
           <LandingPage />
           <Services />
           <Projects />
