@@ -1,6 +1,62 @@
+import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import emailjs from "@emailjs/browser";
+import "react-toastify/dist/ReactToastify.css";
 
-function contactus() {
+function ContactUs() {
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateMobile = (mobile) => /^[0-9]{10}$/.test(mobile);
+  const validateMessage = (message) => message.trim().length > 0;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const emailInput = form.elements.email;
+    const mobileInput = form.elements.mobileNumber;
+    const queryInput = form.elements.query;
+
+    if (!validateEmail(emailInput.value)) {
+      toast.error("Please enter a valid email address.");
+      emailInput.focus();
+      return;
+    }
+
+    if (!validateMobile(mobileInput.value)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
+      mobileInput.focus();
+      return;
+    }
+
+    if (!validateMessage(queryInput.value)) {
+      toast.error("Please enter your query.");
+      queryInput.focus();
+      return;
+    }
+
+    // Send email using EmailJS
+    emailjs
+      .send(
+        "service_au65o8k", // Your EmailJS service ID
+        "template_g15s0mf", // Your EmailJS template ID
+        {
+          to_email: emailInput.value, // dynamic receiver email from form
+          mobile: mobileInput.value,
+          query: queryInput.value,
+          name: emailInput.value.split("@")[0],
+          time: new Date().toLocaleString(),
+        },
+        "eVeaNHbIWBKSG7gOs" // Your EmailJS public key
+      )
+      .then(() => {
+        toast.success("Your query has been submitted successfully!");
+        form.reset(); // Clear form
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        toast.error("Something went wrong. Please try again.");
+      });
+  };
+
   return (
     <div
       id="contactus"
@@ -15,74 +71,27 @@ function contactus() {
       </div>
       <form
         className="flex flex-col gap-4 w-full max-w-md md:px-10 px-5 py-10 bg-gray-800 rounded-lg shadow-lg"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const emailInput = e.target.elements.email;
-          const mobileInput = e.target.elements.mobileNumber;
-          const queryInput = e.target.elements.query;
-
-          if (!emailInput.validity.valid) {
-            const notifyemail = () => {
-              toast.error("Please enter a valid email address.");
-              notifyemail.onClose = () => {
-                emailInput.focus();
-              };
-            };
-            notifyemail();
-            return;
-          }
-
-          const numberRegex = /^[0-9]{10}$/;
-          if (!numberRegex.test(mobileInput.value)) {
-            const notifymobile = () => {
-              toast.error("Please enter a valid mobile number.");
-              notifymobile.onClose = () => {
-                emailInput.focus();
-              };
-            };
-            notifymobile();
-            return;
-          }
-
-          if (queryInput.value.trim() === "") {
-            const notifyqurey = () => {
-              toast.error("Please enter your query.");
-              notifyqurey.onClose = () => {
-                emailInput.focus();
-              };
-            };
-            notifyqurey();
-            return;
-          }
-          if (emailInput.value && mobileInput.value && queryInput.value) {
-            const notify = () => {
-              toast.success("Your query has been submitted successfully!");
-              notify.onClose = () => {
-                emailInput.value = "";
-                mobileInput.value = "";
-                queryInput.value = "";
-              };
-            };
-            notify();
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         <input
           type="email"
           name="email"
-          placeholder="Your Email"
+          placeholder="Email"
+          required
           className="p-3 rounded-md border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500 invalid:border-red-500"
         />
         <input
           type="text"
           name="mobileNumber"
           placeholder="Your Mobile Number"
+          required
           className="p-3 rounded-md border border-gray-300 bg-white text-black focus:outline-none focus:ring-2"
         />
         <textarea
           name="query"
           placeholder="Your Query"
           rows="4"
+          required
           className="p-3 rounded-md border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>
         <button
@@ -97,4 +106,4 @@ function contactus() {
   );
 }
 
-export default contactus;
+export default ContactUs;
