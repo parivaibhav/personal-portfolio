@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -59,7 +59,7 @@ function Navbar() {
           }`}
         ></span>
       </button>
-    
+
       <div
         className={`md:hidden fixed top-0 left-0 w-full h-full bg-white flex flex-col items-center justify-center gap-8 transition-transform duration-300 z-40 ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
