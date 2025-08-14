@@ -1,29 +1,34 @@
 // App.jsx
 import "./App.css";
 import React from "react";
-import Navbar from "./components/Navbar.jsx";
-import LandingPage from "./components/LandingPage.jsx";
-import Services from "./components/Services.jsx";
-import Skils from "./components/Skils.jsx";
-import ContactUs from "./components/contactus.jsx";
-import Footer from "./components/footer.jsx";
-import Projects from "./components/project.jsx";
-import ScrollProgress from "./components/ScrollProgress.jsx"; // <-- New import
+ // <-- New import
+// import Navbar from "./components/Navbar.jsx";
+// import LandingPage from "./components/LandingPage.jsx";
+// import Services from "./components/Services.jsx";
+// import Skills from "./components/Skills.jsx";
+// import ContactUs from "./components/ContactUs.jsx";
+// import Footer from "./components/Footer.jsx";
+// import Projects from "./components/Projects.jsx";
+import PortfolioResume from "./components/PortfolioResume.jsx";
+
+
 
 function App() {
 
-
+  // Import icons
 
   return (
     <>
-      <Navbar />
-      <ScrollProgress /> {/* Scroll Progress Bar */}
-      <LandingPage />
+      {/* <Navbar /> */}
+      <PortfolioResume></PortfolioResume>
+   
+      {/* <LandingPage />
       <Services />
       <Projects />
-      <Skils />
+      <Skills />
       <ContactUs />
-      <Footer />
+      <Footer /> */}
+   
     </>
   );
 }
